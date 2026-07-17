@@ -1,13 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Inject, Injectable } from '@nestjs/common';
+import type { ConfigType } from '@nestjs/config';
+import rootEnv from '../../config/root.env';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(
+    @Inject(rootEnv.KEY)
+    private readonly rootConfig: ConfigType<typeof rootEnv>,
+  ) {}
 
   getUsers() {
-    console.log(this.configService.get<string>('JWT_ACCESS_SECRET'));
-    console.log(this.configService.get<string>('JWT_ACCESS_EXPIRATION'));
+    console.log(this.rootConfig.DATABASE_URL);
+    console.log(this.rootConfig.PORT);
     return [
       {
         name: 'Nayem Ahmed',

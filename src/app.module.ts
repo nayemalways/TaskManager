@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
+import { LearnModule } from './learn/learn.module';
 import rootEnv from './config/root.env';
 
 @Module({
@@ -11,6 +12,7 @@ import rootEnv from './config/root.env';
     ConfigModule.forRoot({ isGlobal: true, load: [rootEnv] }),
     AuthModule,
     UserModule,
+    LearnModule,
   ],
   controllers: [AppController],
   providers: [AppService],
