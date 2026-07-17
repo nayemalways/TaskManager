@@ -25,7 +25,6 @@ const loadEnvVars = (): IEnvVariables => {
     }
   });
 
-  console.log('Env: ', process.env.PORT);
   return {
     PORT: process.env.PORT as string,
     DATABASE_URL: process.env.DATABASE_URL as string,
